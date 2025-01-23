@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  ambag2-dev-env:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        GIT_USERNAME: <your-username>
+        GIT_EMAIL: <your-email@example.com>     
+    image: ambag2-dev-env
+    ports:
+      - "3000:3000" # Firebase UI Emulator
+      - "5000:5000" # Firebase Hosting Emulator
+      - "8080:8080" # Firebase Firestore Emulator
+      - "9099:9099" # Firebase Auth Emulator
+      - "4000:4000" # Firebase Cloud Functions Emulator
+      - "5173:5173" # SvelteKit Dev Server
+    command: ["tail", "-f", "/dev/null"]
